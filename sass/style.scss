@@ -1,0 +1,8 @@
+@mixin backgroundImg {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+@import "pop-up";
+@import "styling";

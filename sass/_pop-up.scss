@@ -1,0 +1,50 @@
+.pop-up {
+  // display: none;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 30;
+}
+
+.block-container {
+  background-color: white;
+  padding: 20px 100px 40px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 0 20px (0, 0, 0, 0.8);
+}
+
+.lose {
+  p {
+    margin-bottom: 20px;
+  }
+
+  button {
+    width: 80px;
+    height: 40px;
+    border: none;
+    outline: none;
+    border-radius: 13px;
+    background-color: #909090;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: #00afff;
+    color: black;
+  }
+
+  button:first-of-type {
+    margin-right: 15px;
+  }
+}
+
+.lose {
+  display: none;
+}

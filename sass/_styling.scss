@@ -1,0 +1,56 @@
+body {
+  overflow: hidden;
+  width: 100vw;
+  height: 50%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial;
+  letter-spacing: 1.2px;
+}
+
+.balloon {
+  width: 100px;
+  height: 200px;
+  position: absolute;
+  top: 100vh;
+}
+
+.balloon-red {
+  background-image: url(/images/balloon-red.png);
+  @include backgroundImg();
+}
+
+.balloon-blue {
+  background-image: url(/images/balloon-blue.png);
+  @include backgroundImg();
+}
+
+.balloon-green {
+  background-image: url(/images/balloon-green.png);
+  @include backgroundImg();
+}
+
+.balloon-violet {
+  background-image: url(/images/balloon-violet.png);
+  @include backgroundImg();
+}
+
+.balloon-yellow {
+  background-image: url(/images/balloon-yellow.png);
+  @include backgroundImg();
+}
+
+.score-block {
+  background-color: #909090;
+  color: white;
+  width: 300px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px 20px 0 0;
+  position: absolute;
+  bottom: 0;
+  left: calc(50% - 150px);
+}
