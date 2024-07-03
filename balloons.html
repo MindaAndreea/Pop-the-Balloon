@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="/up/css/style.css" />
   </head>
   <body>
-    <div class="balloon balloon-red"></div>
     <div class="score-block">
       <p>You popped <span class="score">0</span> balloons.</p>
     </div>
@@ -19,6 +18,9 @@
           <img src="/images/happy.png" alt="win image" />
           <h4>You popped all 100 balloons.</h4>
           <p>You are a champion!</p>
+          <p>Do you want to play again?</p>
+          <button class="play-yes">Yes</button>
+          <button class="play-no">No</button>
         </div>
         <div class="total-wrapper lose">
           <h3>Sorry!</h3>
@@ -30,5 +32,7 @@
         </div>
       </div>
     </div>
+    <script src="/javascript/balloons.js"></script>
+    <script src="/javascript/buttons.js"></script>
   </body>
 </html>

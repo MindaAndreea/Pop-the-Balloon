@@ -1,26 +1,19 @@
 .pop-up {
-  // display: none;
+  display: none;
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.6);
-  display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
   z-index: 30;
-}
 
-.block-container {
-  background-color: white;
-  padding: 20px 100px 40px;
-  border-radius: 10px;
-  text-align: center;
-  box-shadow: 0 0 20px (0, 0, 0, 0.8);
-}
-
-.lose {
-  p {
-    margin-bottom: 20px;
+  .block-container {
+    background-color: white;
+    padding: 20px 100px 40px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 0 20px (0, 0, 0, 0.8);
   }
 
   button {
@@ -43,8 +36,10 @@
   button:first-of-type {
     margin-right: 15px;
   }
-}
 
-.lose {
-  display: none;
+  .lose {
+    p {
+      margin-bottom: 20px;
+    }
+  }
 }

@@ -1,26 +1,21 @@
 .pop-up {
+  display: none;
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.6);
-  display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
   z-index: 30;
 }
-
-.block-container {
+.pop-up .block-container {
   background-color: white;
   padding: 20px 100px 40px;
   border-radius: 10px;
   text-align: center;
   box-shadow: 0 0 20px 0, 0, 0, 0.8;
 }
-
-.lose p {
-  margin-bottom: 20px;
-}
-.lose button {
+.pop-up button {
   width: 80px;
   height: 40px;
   border: none;
@@ -31,16 +26,15 @@
   font-size: 15px;
   cursor: pointer;
 }
-.lose button:hover {
+.pop-up button:hover {
   background-color: #00afff;
   color: black;
 }
-.lose button:first-of-type {
+.pop-up button:first-of-type {
   margin-right: 15px;
 }
-
-.lose {
-  display: none;
+.pop-up .lose p {
+  margin-bottom: 20px;
 }
 
 body {
