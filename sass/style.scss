@@ -4,5 +4,17 @@
   background-repeat: no-repeat;
 }
 
+button {
+  width: 80px;
+  height: 40px;
+  border: none;
+  outline: none;
+  border-radius: 13px;
+  background-color: #909090;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+}
+
 @import "pop-up";
 @import "styling";

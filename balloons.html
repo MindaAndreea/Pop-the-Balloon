@@ -3,13 +3,31 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/55fb0d6d0f.js"
+      crossorigin="anonymous"
+    ></script>
     <link rel="icon" href="/images/icon.jpg" />
     <title>Pop the Balloon</title>
     <link rel="stylesheet" href="/up/css/style.css" />
   </head>
   <body>
-    <div class="score-block">
-      <p>You popped <span class="score">0</span> balloons.</p>
+    <div class="settings">
+      <i class="fa-solid fa-gear" id="settings-icon"></i>
+      <div class="score-block">
+        <p>You popped <span class="score">0</span> balloons.</p>
+        <div class="volume-control">
+          <label for="volume-slider">Volume:</label>
+          <input
+            type="range"
+            id="volume-slider"
+            min="0"
+            max="1"
+            step="0.1"
+            value="0.5"
+          />
+        </div>
+      </div>
     </div>
     <div class="pop-up">
       <div class="block-container">
@@ -33,6 +51,5 @@
       </div>
     </div>
     <script src="/javascript/balloons.js"></script>
-    <script src="/javascript/buttons.js"></script>
   </body>
 </html>

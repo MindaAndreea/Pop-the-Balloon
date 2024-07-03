@@ -3,17 +3,51 @@ const windowWidth = window.innerWidth;
 const body = document.body;
 const windowHeight = window.innerHeight;
 const score = document.querySelectorAll(".score");
+const scoreBlock = document.querySelector(".score-block");
 let number = 0;
 let total = 100;
 let balloonCrt = 0;
 let gameOver = false;
 const popUp = document.querySelector(".pop-up");
+const win = popUp.querySelector(".win");
+const lose = popUp.querySelector(".lose");
+const playBtn = document.querySelectorAll(".play-yes");
+const cancelBtn = document.querySelectorAll(".play-no");
+const settings = document.querySelector(".settings");
+const settingsIcon = document.getElementById("settings-icon");
+const volumeControl = document.querySelector(".volume-control");
+const volumeSlider = document.getElementById("volume-slider");
+let volumeCrt = volumeSlider.value;
+let bgAudioOn = document.querySelector(".bg-vol-on");
+let bgAudioOff = document.querySelector(".bg-vol-off");
+
+settingsIcon.addEventListener("click", () => {
+  if (
+    volumeControl.style.display === "none" ||
+    (volumeControl.style.display === "" &&
+      scoreBlock.style.display === "none") ||
+    scoreBlock.style.display === ""
+  ) {
+    volumeControl.style.display = "flex";
+    scoreBlock.style.display = "flex";
+  } else {
+    volumeControl.style.display = "none";
+    scoreBlock.style.display = "none";
+  }
+});
+
+volumeSlider.addEventListener("input", (event) => {
+  volumeCrt = event.target.value;
+});
 
 function createBalloon() {
   let div = document.createElement("div");
   let random = Math.floor(Math.random() * colors.length);
 
   div.className = "balloon balloon-" + colors[random];
+
+  let marginLeft = 50 + "px";
+  div.style.left = marginLeft;
 
   random = Math.floor(Math.random() * (windowWidth - 100));
   div.style.left = random + "px";
@@ -26,11 +60,12 @@ function createBalloon() {
 
 function animateBalloon(elem) {
   let position = 0;
-  let interval = setInterval(frame, 9);
+  let random = Math.floor(Math.random() * 6 - 3);
+  let interval = setInterval(frame, 12 - Math.floor(number / 10) + random);
 
   function frame() {
     if (
-      position >= windowHeight + 200 &&
+      position >= windowHeight + 100 &&
       document.querySelector('[data-number="' + elem.dataset.number + '"]') !==
         null
     ) {
@@ -47,6 +82,7 @@ function deleteBalloon(elem) {
   elem.remove();
   number++;
   updateScore();
+  popBalloonSound();
 }
 
 function updateScore() {
@@ -56,21 +92,26 @@ function updateScore() {
 }
 
 function startGame() {
+  restartGame();
+  let timeout = 0;
   let loop = setInterval(() => {
+    timeout = Math.floor(Math.random() * 600 - 100);
     if (!gameOver && number !== total) {
       createBalloon();
     } else if (number !== total) {
       clearInterval(loop);
+      settings.style.display = "none";
       popUp.style.display = "flex";
-      popUp.querySelector(".lose").style.display = "block";
-      popUp.querySelector(".win").style.display = "none";
+      win.style.display = "none";
+      lose.style.display = "block";
     } else {
       clearInterval(loop);
+      settings.style.display = "none";
       popUp.style.display = "flex";
-      popUp.querySelector(".lose").style.display = "none";
-      popUp.querySelector(".win").style.display = "block";
+      lose.style.display = "none";
+      win.style.display = "block";
     }
-  }, 800);
+  }, 800 + timeout);
 }
 
 document.addEventListener("click", (event) => {
@@ -79,4 +120,38 @@ document.addEventListener("click", (event) => {
   }
 });
 
-// startGame();
+function restartGame() {
+  let remove = document.querySelectorAll(".balloon");
+  for (let i = 0; i < remove.length; i++) {
+    remove[i].remove();
+  }
+  gameOver = false;
+  number = 0;
+  updateScore();
+}
+
+playBtn.forEach((button) => {
+  button.addEventListener("click", () => {
+    popUp.style.display = "none";
+    lose.style.display = "none";
+    win.style.display = "none";
+    settings.style.display = "flex";
+    startGame();
+  });
+});
+
+cancelBtn.forEach((button) => {
+  button.addEventListener("click", () => {
+    popUp.style.display = "none";
+    settings.style.display = "flex";
+  });
+});
+
+function popBalloonSound() {
+  let audio = document.createElement("audio");
+  audio.src = "sounds/pop.mp3";
+  audio.volume = volumeCrt;
+  audio.play();
+}
+
+startGame();
